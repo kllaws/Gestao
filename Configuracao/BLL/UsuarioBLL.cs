@@ -13,7 +13,7 @@ namespace BLL
             if( _usuario.NomeUsuario.Contains("..."))
                 throw new Exception("O nome de usuario nao pode conter espaço ");
   
-            if (_usuario.Senha ==("1234567"))
+            if (_usuario.Senha ==("12356768"))
                    throw new Exception("Nao e permitido um numero sequencial. ");
 
             if (_usuario.Senha.Length <= 7 || _usuario.Senha.Length > 11)

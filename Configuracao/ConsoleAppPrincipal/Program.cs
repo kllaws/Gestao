@@ -8,17 +8,23 @@ namespace ConsoleAppPrincipal
     {
         private static void Main(string[] args)
         {
-            UsuarioBLL usuarioBLL = new UsuarioBLL();
-            Usuario usuario = new Usuario();
-            usuario.Nome = "kllaws silva";
-            usuario.NomeUsuario = "kllaws";
-            usuario.Ativo = true;
-            usuario.Email = "martins199319@gmail.com";
-            usuario.Cpf = "038.047.511-13";
-            usuario.Senha = "123";
-            usuarioBLL.Inserir(usuario);
+            try
+            {
+                Usuario usuario = new Usuario();
+                usuario.Nome = "kllaws silva";
+                usuario.NomeUsuario = "kllaws";
+                usuario.Ativo = true;
+                usuario.Email = "martins199319@gmail.com";
+                usuario.Cpf = "038.047.511-13";
+                usuario.Senha = "123456557";
 
-           
+                UsuarioBLL usuarioBLL = new UsuarioBLL();
+                usuarioBLL.Inserir(usuario);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
         }
     }
