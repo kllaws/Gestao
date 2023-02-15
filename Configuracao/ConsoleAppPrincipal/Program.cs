@@ -8,20 +8,47 @@ namespace ConsoleAppPrincipal
     {
         private static void Main(string[] args)
         {
+            UsuarioBLL usuarioBLL = new UsuarioBLL();
+            Usuario usuario = new Usuario();
             try
             {
-                Usuario usuario = new Usuario();
-                usuario.Nome = "kllaws silva d";
-                usuario.NomeUsuario = "kllaws s";
-                usuario.Ativo = true;
-                usuario.Email = "martins199319@gmail.com";
-                usuario.Cpf = "038.047.511-13";
-                usuario.Senha = "123456597";
+                string opc;
+                do
+                {
+                    Console.WriteLine("Digete seu nome");
+                    usuario.Nome = Console.ReadLine();
 
-                UsuarioBLL usuarioBLL = new UsuarioBLL();
+                    Console.WriteLine("Digete seu nome de usuario? ");
+                    usuario.NomeUsuario = Console.ReadLine();
+
+                    Console.WriteLine("Digete seu Email");
+                    usuario.Email = Console.ReadLine();
+
+                    Console.WriteLine("Digete seu CPF");
+                    usuario.Cpf = Console.ReadLine();
+
+                    Console.WriteLine("Digete sua Senha");
+                    usuario.Senha = Console.ReadLine();
+
+                    usuario.Ativo = true;
+                   
+                    /*
+                    usuario.Nome = "kllaws silva d";
+                    usuario.NomeUsuario = "kllaws s";
+                    usuario.Ativo = true;
+                    usuario.Email = "martins199319@gmail.com";
+                    usuario.Cpf = "038.047.511-13";
+                    usuario.Senha = "123456597";
+                    */
+                
+
                 usuarioBLL.Inserir(usuario);
+                    Console.WriteLine("Usuario criado... Deseja continuar cadastrando? 1(sim) 2 (nao)");
+                    opc = Console.ReadLine();
+
+                } while (opc == "1");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

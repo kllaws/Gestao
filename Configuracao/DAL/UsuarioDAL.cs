@@ -15,6 +15,7 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
+                
                 cmd.Connection = cn;
                 cmd.CommandText = @"INSERT INTO Usuario(nome, NomeUsuario, CPF, Email, senha, ativo) 
                                        VALUES(@Nome, @NomeUsuario, @CPF, @Email, @Senha, @Ativo)";
