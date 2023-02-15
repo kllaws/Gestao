@@ -13,12 +13,11 @@ namespace DAL
 
             try
             {
-
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"INSERT INTO Usuario(nome, NomeUsuario, CPF, Email, senha, ativos) 
-                                       VALUES(@Nome, @NomeuUsuario, @CPF, @Email, @Senha, @Ativo)";
+                cmd.CommandText = @"INSERT INTO Usuario(nome, NomeUsuario, CPF, Email, senha, ativo) 
+                                       VALUES(@Nome, @NomeUsuario, @CPF, @Email, @Senha, @Ativo)";
 
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Nome",_usuario.Nome);
@@ -36,7 +35,6 @@ namespace DAL
             catch (Exception ex)
             {
                 throw new Exception("Ocorreu um erro ao tentar inserir um usuario no banco: "+ ex.Message);
-
             }
             finally
             {

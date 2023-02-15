@@ -11,12 +11,12 @@ namespace ConsoleAppPrincipal
             try
             {
                 Usuario usuario = new Usuario();
-                usuario.Nome = "kllaws silva";
-                usuario.NomeUsuario = "kllaws";
+                usuario.Nome = "kllaws silva d";
+                usuario.NomeUsuario = "kllaws s";
                 usuario.Ativo = true;
                 usuario.Email = "martins199319@gmail.com";
                 usuario.Cpf = "038.047.511-13";
-                usuario.Senha = "123456557";
+                usuario.Senha = "123456597";
 
                 UsuarioBLL usuarioBLL = new UsuarioBLL();
                 usuarioBLL.Inserir(usuario);
