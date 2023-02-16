@@ -13,6 +13,7 @@ namespace ConsoleAppPrincipal
             try
             {
                 string opc;
+                string opcao;
                 do
                 {
                     Console.WriteLine("Digete seu nome");
@@ -20,6 +21,8 @@ namespace ConsoleAppPrincipal
 
                     Console.WriteLine("Digete seu nome de usuario? ");
                     usuario.NomeUsuario = Console.ReadLine();
+
+ 
 
                     Console.WriteLine("Digete seu Email");
                     usuario.Email = Console.ReadLine();
@@ -30,8 +33,11 @@ namespace ConsoleAppPrincipal
                     Console.WriteLine("Digete sua Senha");
                     usuario.Senha = Console.ReadLine();
 
-                    usuario.Ativo = true;
-                   
+
+                    Console.WriteLine("O usuario esta  ativo? (s) ou (n)");
+                    usuario.Ativo = Console.ReadLine().ToUpper() == "s";
+
+
                     /*
                     usuario.Nome = "kllaws silva d";
                     usuario.NomeUsuario = "kllaws s";
@@ -40,10 +46,10 @@ namespace ConsoleAppPrincipal
                     usuario.Cpf = "038.047.511-13";
                     usuario.Senha = "123456597";
                     */
-                
 
-                usuarioBLL.Inserir(usuario);
-                    Console.WriteLine("Usuario criado... Deseja continuar cadastrando? 1(sim) 2 (nao)");
+
+                    usuarioBLL.Inserir(usuario);
+                    Console.WriteLine("Usuario criado com sucesso... \nDeseja continuar cadastrando? \n 1(sim) 2 (nao)");
                     opc = Console.ReadLine();
 
                 } while (opc == "1");
