@@ -13,6 +13,14 @@ namespace DAL
 
         public void Inserir(PermissaoDAL _permissaoDAL)
         {
+            string id;
+            string descricao;
+
+
+            Console.WriteLine("");
+            id = Console.ReadLine();
+
+            System.Console.ReadKey();
 
         }
         public PermissaoDAL Buscar(string _nomeUsuario)
