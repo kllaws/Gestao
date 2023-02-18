@@ -1,8 +1,9 @@
-﻿using Models;
+﻿using DAL;
+using Models;
 using System.Data.SqlClient;
-namespace DAL
+namespace BLL
 {
-    public class PermissaoDAL
+    public class PermissaoBLL
     {
         public void Inserir(Permissao _permissao)
         {
@@ -31,7 +32,7 @@ namespace DAL
         {
             return new Permissao();
         }
-        // public void Alterar(Permissao permissao)
+        //public void Alterar(Permissao permissao)
         public void Alterar(Permissao _permissao)
         {
             SqlConnection cn = new SqlConnection();
@@ -58,8 +59,8 @@ namespace DAL
                 cn.Close();
             }
         }
-        //public void Excluir(int _id)
-        public void Excluir(Permissao _permissao)
+       // public void Excluir(int Id);
+        public static void Excluir(Permissao _permissao)
         {
             SqlConnection cn = new SqlConnection();
 
@@ -85,6 +86,5 @@ namespace DAL
                 cn.Close();
             }
         }
-
     }
 }
