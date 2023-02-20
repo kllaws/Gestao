@@ -8,6 +8,6 @@ namespace Models
 
         public string Descricao { get; set; }
        public List<GrupoUsuario> GrupoUsuario { get; set; }
-
+        public object IdDescricao { get; set; }
     }
 }
