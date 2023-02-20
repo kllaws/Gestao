@@ -25,6 +25,29 @@ namespace BLL
             
         }
         public Usuario Buscar(string _nomeUsuario)
+        Console.write("Digite o nome que deseja pesquisar: ");
+        nome.Console.ReadLine();
+        string nomes = {};
+
+        bool achou = false;
+        for (int i=; i< nomes.length; i++)
+        {
+            if(nomes[i]== nome)
+            {
+                achou = true;
+                break;
+            }
+        }
+        if(achou)
+        {
+            Console.WriteLine("O nome "nome"esta cadastrado")
+            console.ReadLine.nome();
+        }
+        else
+        {
+          Console.WriteLine("O nome nao esta na lista");  
+        }
+        
         {
             return new Usuario();
         }
