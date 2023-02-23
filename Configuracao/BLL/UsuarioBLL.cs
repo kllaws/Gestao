@@ -1,64 +1,42 @@
-﻿using DAL;
-using Models;
-
-namespace BLL
+﻿usando  DAL ;
+usando  Modelos ;
+espaço de nomes  BLL
 {
-    public class UsuarioBLL
+     classe  pública UsuárioBLL
     {
-        public void Inserir(Usuario _usuario)
+        public  void  Inserir ( Usuario  _usuario )
         {
-            if (_usuario.NomeUsuario.Length <= 3 || _usuario.NomeUsuario.Length >= 50)
-                throw new Exception("O nome do usuario deve ter mais de tres caracteres.");
-
-            if( _usuario.NomeUsuario.Contains("..."))
-                throw new Exception("O nome de usuario nao pode conter espaço ");
-  
-            if (_usuario.Senha ==("123567"))
-                   throw new Exception("Nao e permitido um numero sequencial. ");
-
-            if (_usuario.Senha.Length <= 7 || _usuario.Senha.Length > 11)
-                    throw new Exception("A senha deve ter entre 7 e 11 caracteres. ");
-
-            // TODO: Validar se ja existe um usuario com esse nome.
-            UsuarioDAL usuarioDAL = new UsuarioDAL();
-            usuarioDAL.Inserir(_usuario);
-            
+            if ( _usuario . NomeUsuario . Comprimento  <=  3  ||  _usuario . NomeUsuario . Comprimento  >=  50 )
+                throw  new  Exception ( " O nome do usuário deve ter mais de três caracteres. " );
+            if ( _usuario . NomeUsuario . Contém ( "  " ))
+                throw  new  Exception ( " O nome do usuário não pode conter espaço em branco. " );
+            if ( _usuário . Senha . Contém ( " 1234567 " ))
+                throw  new  Exception ( " Não é permitido um número sequencial. " );
+            if ( _usuario . Senha . Comprimento  <  7  ||  _usuario . Senha . Comprimento  >  11 )
+                lançar  nova  exceção ( " A senha deve ter entre 7 e 11 caracteres. " );
+            // TODO: Validar se já existe um usuário com nome existente.
+            UsuarioDAL  usuarioDAL  =  new  UsuarioDAL ();
+            usuarioDAL . Inserir ( _usuário );
         }
-        public Usuario Buscar(string _nomeUsuario)
-        Console.write("Digite o nome que deseja pesquisar: ");
-        nome.Console.ReadLine();
-        string nomes = {};
-
-        bool achou = false;
-        for (int i=; i< nomes.length; i++)
+         public  Usuário  Buscar ( string  _nomeUsuario )
         {
-            if(nomes[i]== nome)
-            {
-                achou = true;
-                break;
-            }
+            retornar  novo  usuário ();
         }
-        if(achou)
+        public  void  Change ( Usuario  _usuario )
         {
-            Console.WriteLine("O nome "nome"esta cadastrado")
-            console.ReadLine.nome();
+            if ( _usuario . NomeUsuario . Comprimento  <=  3  ||  _usuario . NomeUsuario . Comprimento  >=  100 )
+                throw  new  Exception ( " O nome do usuário deve conter de 3 a 100 caracteres. " );
+            if ( _usuario . NomeUsuario . Contém ( "  " ))
+                throw  new  Exception ( " O nome do usuário não pode conter espaço em branco. " );
+            if ( _usuário . Senha . Contém ( " 1234567 " ))
+                throw  new  Exception ( " Não é permitido número sequencial. " );
+            if ( _usuario . Senha . Comprimento  <  7  ||  _usuario . Senha . Comprimento  >  11 )
+                lançar  nova  exceção ( " A senha deve ter entre 7 e 11 caracteres. " );
+            UsuarioDAL  usuarioDAL  =  new  UsuarioDAL ();
+            usuarioDAL . Mudar ( _usuário );
         }
-        else
+        public  void  Excluir ( int  _id )
         {
-          Console.WriteLine("O nome nao esta na lista");  
-        }
-        
-        {
-            return new Usuario();
-        }
-        public void Alterar (Usuario _usuario)
-        {
-
-        }
-        public void Excluir (int _id)
-        {
-
-        }
-
+             }
     }
 }
