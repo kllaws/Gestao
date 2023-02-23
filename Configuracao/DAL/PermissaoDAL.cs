@@ -10,10 +10,33 @@ namespace DAL
 {
     internal class PermissaoDAL
     {
+        public void Buscar (Permissao _permissao)
+        {
+            SqlConnection cn = new SqlConnection();
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"FROM TABLE Permissao SET Descricao = @Descricao WHERE IdDescricao = @IdDescricao";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdDescricao", _permissao.IdDescricao);
+                cn.Open();
+                cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar atualizar uma descrição no banco: " + ex.Message);
+            }
+            finally
+
+            {
+                cn.Close();
+            }
+        }
         public void Alterar(Permissao _permissao)
         {
             SqlConnection cn = new SqlConnection();
-
             try
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
@@ -22,14 +45,12 @@ namespace DAL
                 cmd.CommandText = @"UPDATE Permissao SET Descricao = @Descricao WHERE IdDescricao = @IdDescricao";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdDescricao", _permissao.IdDescricao);
-
                 cn.Open();
                 cmd.ExecuteScalar();
             }
             catch (Exception ex)
             {
-
-                throw new Exception("Ocorreu um erro ao tentar atualizar uma descrição no banco: " + ex.Message);
+            throw new Exception("Ocorreu um erro ao tentar atualizar uma descrição no banco: " + ex.Message);
             }
             finally
             {
@@ -39,7 +60,6 @@ namespace DAL
         public void Excluir(Permissao _permissao)
         {
             SqlConnection cn = new SqlConnection();
-
             try
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
@@ -48,14 +68,12 @@ namespace DAL
                 cmd.CommandText = @"DELETE FROM Permissao WHERE IdDescricao = @IdDescricao";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdDescricao", _permissao.IdDescricao);
-
                 cn.Open();
                 cmd.ExecuteScalar();
             }
             catch (Exception ex)
             {
-
-                throw new Exception("Ocorreu um erro ao tentar excluir uma descrição no banco: " + ex.Message);
+             throw new Exception("Ocorreu um erro ao tentar excluir uma descrição no banco: " + ex.Message);
             }
             finally
             {
