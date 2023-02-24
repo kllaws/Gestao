@@ -76,8 +76,8 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine(String.Format("Ocorreu o seguinte erro: {0} ao tentar buscar no banco, o numero do erro e {1}", ex.Message, 154));
-                Console.WriteLine($"Ocorreu o seguinte erro: {ex.Message} ao tentar buscar no banco o numero do erro");
+                //Console.WriteLine(String.Format("Ocorreu o seguinte erro: {0} ao tentar buscar no banco, o numero do erro e {1}", ex.Message, 154));
+                //Console.WriteLine($"Ocorreu o seguinte erro: {ex.Message} ao tentar buscar no banco o numero do erro");
                 throw new Exception("Ocorreu um erro ao tentar buscar todos os usuarios: " + ex.Message);
             }
             finally
@@ -116,6 +116,11 @@ namespace DAL
             {
                 cn.Close();
             }
+        }
+
+        public void Change(Usuario usuario)
+        {
+            throw new NotImplementedException();
         }
     }
 }
