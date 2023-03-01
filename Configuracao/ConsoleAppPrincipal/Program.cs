@@ -3,7 +3,7 @@ using ConsoleAppPrincipal;
 using Models;
 using System;
 using System.Runtime.CompilerServices;
-/*
+
 internal class Program
 {
     public static object Private { get; private set; }
@@ -172,14 +172,13 @@ internal class Program
         }
     
 }
-*/
 
 
 
 
 
 
-
+/*
 internal class Program
 {
     private static void Main(string[] args)
@@ -252,5 +251,5 @@ internal class Program
         Console.WriteLine("Excluir usuário");
     }
 }
-
+*/
  
