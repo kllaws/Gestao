@@ -3,7 +3,7 @@ using ConsoleAppPrincipal;
 using Models;
 using System;
 using System.Runtime.CompilerServices;
-
+/*
 internal class Program
 {
     public static object Private { get; private set; }
@@ -18,7 +18,7 @@ internal class Program
         Console.WriteLine("2 - Excluir usuario                  |");
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("3 - Alterar usuario                  |");
-        Console.WriteLine("4 - Buscar todos os usuarios usuario |");
+        Console.WriteLine("4 - Buscar todos os usuarios         |");
         Console.WriteLine("_____________________________________|");
 
         opcao = Convert.ToInt32(Console.ReadLine());
@@ -172,3 +172,85 @@ internal class Program
         }
     
 }
+*/
+
+
+
+
+
+
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        int opcao = 0;
+        Console.WriteLine(@"Escolha uma opção:
+                            \n\n1 - Cadastrar usuário
+                            \n2 - Excluir usuário
+                            \n3 - Buscar todos os usuários");
+
+
+        opcao = Convert.ToInt32(Console.ReadLine());
+
+        switch (opcao)
+        {
+            case 1:
+                CadastrarUsuario();
+                break;
+            case 2:
+                ExcluirUsuario();
+                break;
+            case 3:
+                BuscarTodosOsUsuarios();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private static void BuscarTodosOsUsuarios()
+    {
+        UsuarioBLL usuarioBLL = new UsuarioBLL();
+        List<Usuario> usuarios = usuarioBLL.BuscarTodos();
+
+        foreach (Usuario item in usuarios)
+        {
+            Console.WriteLine("Id: " + item.Id);
+            Console.WriteLine("Nome de usuário: " + item.NomeUsuario);
+            Console.WriteLine("E-mail: " + item.Email);
+        }
+
+    }
+
+    private static void CadastrarUsuario()
+    {
+        try
+        {
+            Usuario usuario = new Usuario();
+            UsuarioBLL usuarioBLL = new UsuarioBLL();
+            usuario.Nome = "Erisvaldo Carvalho Silva";
+            usuario.NomeUsuario = "erisvaldo";
+
+            Console.WriteLine("O usuário estará ativo (S) ou (N)");
+            usuario.Ativo = true;//Console.ReadLine().ToUpper() == "S";
+
+            usuario.Email = "contato@erisvaldocarvalho.com.br";
+            usuario.CPF = "458.158.442-88";
+ usuario.Senha = "12asdfdfe3";
+
+            usuarioBLL.Inserir(usuario);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private static void ExcluirUsuario()
+    {
+        Console.WriteLine("Excluir usuário");
+    }
+}
+
+ 

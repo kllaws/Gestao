@@ -3,25 +3,24 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Diagnostics;
 
-namespace DAL
+  namespace DAL
 {
     public class UsuarioDAL
     {
-       
         public void Inserir(Usuario _usuario)
         {
-            SqlConnection cn = new SqlConnection();//cn é um objeto de conexao
+            SqlConnection cn = new SqlConnection();
             try
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"INSERT INTO Usuario(Nome, NomeUsuario, CPF, Email, Senha, Ativo)
-                                      VALUES (@Nome, @NomeUsuario, @CPF, @Email, @Senha, @Ativo)";//com o arroba ele aceita a quebra de linha
+                cmd.CommandText = @"INSERT INTO Usuario(Nome, NomeUsuario, CPF, Email, Senha, Ativo) 
+                                    VALUES(@Nome, @NomeUsuario, @CPF, @Email, @Senha, @Ativo)";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
                 cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
-                cmd.Parameters.AddWithValue("@CPF", _usuario.Cpf);
+                cmd.Parameters.AddWithValue("@CPF", _usuario.CPF);
                 cmd.Parameters.AddWithValue("@Email", _usuario.Email);
                 cmd.Parameters.AddWithValue("@Senha", _usuario.Senha);
                 cmd.Parameters.AddWithValue("@Ativo", _usuario.Ativo);
@@ -37,90 +36,65 @@ namespace DAL
                 cn.Close();
             }
         }
-        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
+            public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
         {
-            return new Usuario();//para solucionar o erro de vazio.
+            return new Usuario();
         }
-        public static List<Usuario> BuscarTodos()
+        public List<Usuario> BuscarTodos()
         {
             List<Usuario> usuarios = new List<Usuario>();
             Usuario usuario;
-            SqlCommand cmd = new SqlCommand();
+
             SqlConnection cn = new SqlConnection();
-            
+            SqlCommand cmd = new SqlCommand();
+
             try
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT ID, NOME, CPF, Email, Ativo FROM Usuario";
+                cmd.CommandText = @"SELECT Id, Nome, CPF, Email, Ativo 
+                                    FROM Usuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cn.Open();
 
                 using (SqlDataReader rd = cmd.ExecuteReader())
-                
                 {
                     while (rd.Read())
                     {
                         usuario = new Usuario();
-                        usuario.Id = Convert.ToInt32(rd["id"]);
-                        usuario.Nome = rd["nome"].ToString();
+                        usuario.Id = Convert.ToInt32(rd["Id"]);
+                        usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.CPF = rd["CPF"].ToString();
-                        usuario.Email = rd["email"].ToString();
+                        usuario.Email = rd["Email"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
 
-                        usuario.Add(usuario);
+                        usuarios.Add(usuario);
                     }
-
                 }
+                return usuarios;
             }
             catch (Exception ex)
             {
-                //Console.WriteLine(String.Format("Ocorreu o seguinte erro: {0} ao tentar buscar no banco, o numero do erro e {1}", ex.Message, 154));
-                //Console.WriteLine($"Ocorreu o seguinte erro: {ex.Message} ao tentar buscar no banco o numero do erro");
-                throw new Exception("Ocorreu um erro ao tentar buscar todos os usuarios: " + ex.Message);
-            }
-            finally
-            {
-                cn.Close();
-            }
-            return usuarios;
-        }
-        public void Alterar(Usuario usuario)
-        {
-
-        }
-       // public void  Excluir(int _Id);
-        public void Excluir(Usuario _IdUsuario)
-        {
-            SqlConnection cn = new SqlConnection();
-
-            try
-            {
-                cn.ConnectionString = Conexao.StringDeConexao;
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = cn;
-                cmd.CommandText = @"DELETE FROM Usuario WHERE IdUsuario = @IdUsuario";
-                cmd.CommandType = System.Data.CommandType.Text;
-                //cmd.Parameters.AddWithValue("@IdUsuario", _IdUsuario.);
-
-                cn.Open();
-                cmd.ExecuteScalar();
-            }
-            catch (Exception ex)
-            {
-
-                throw;
+                Console.WriteLine(String.Format("Ocorreu o seguinte erro: {0} ao tentar buscar no banco, o número do erro é {1}", ex.Message, 154));
+                Console.WriteLine($"Ocorreu o seguinte erro: {ex.Message} ao tentar buscar no banco, o número do erro é {15}");
+                throw new Exception("Ocorreu um erro ao tentar buscar todos os usuários: " + ex.Message);
             }
             finally
             {
                 cn.Close();
             }
         }
-
-        public void Change(Usuario usuario)
+        public void Alterar(Usuario _usuario)
         {
-            throw new NotImplementedException();
+
         }
+        public void Excluir(int _id)
+        {
+
+        }
+
     }
 }
+ 
+ 
