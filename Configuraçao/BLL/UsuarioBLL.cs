@@ -1,11 +1,12 @@
-﻿using DAL ;
-using  Models ;
+﻿using DAL;
+using Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BLL
 {
-    public class UsuárioBLL
+    public class UsuarioBLL
     {
         public void Inserir(Usuario _usuario)
         {
@@ -40,6 +41,12 @@ namespace BLL
         {
             UsuarioDAL usuarioDAL = new UsuarioDAL();
         }
+        public List<Usuario> BuscarTodos()
+        {
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            return usuarioDAL.BuscarTodos();
+        }
+    
 
     }
 }

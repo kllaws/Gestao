@@ -54,7 +54,7 @@ using System.Diagnostics;
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, CPF, Email, Ativo 
+                cmd.CommandText = @"SELECT Id, Nome, NomeUsuario,CPF, Email, Ativo 
                                     FROM Usuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cn.Open();
