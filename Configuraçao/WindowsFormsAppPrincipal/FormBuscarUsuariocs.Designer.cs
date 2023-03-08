@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscarUsuariocs));
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Buscar = new System.Windows.Forms.Button();
+            this.buttonBuscarUsuario = new System.Windows.Forms.Button();
             this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usuarioBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -56,11 +56,11 @@
             this.grupoUsuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.grupoUsuariosDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Alterar = new System.Windows.Forms.Button();
-            this.Excluir = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.Adicionar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonAlterarUsuario = new System.Windows.Forms.Button();
+            this.buttonAdicionarUsuario = new System.Windows.Forms.Button();
+            this.buttonExcluirUsuario = new System.Windows.Forms.Button();
+            this.buttonAdicionarGrupoUsuario = new System.Windows.Forms.Button();
+            this.buttonExcluirGrupoUsuario = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingNavigator)).BeginInit();
             this.usuarioBindingNavigator.SuspendLayout();
@@ -71,20 +71,24 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(24, 48);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(573, 22);
+            this.textBox1.Size = new System.Drawing.Size(683, 22);
             this.textBox1.TabIndex = 0;
             // 
-            // Buscar
+            // buttonBuscarUsuario
             // 
-            this.Buscar.Location = new System.Drawing.Point(612, 48);
-            this.Buscar.Name = "Buscar";
-            this.Buscar.Size = new System.Drawing.Size(75, 23);
-            this.Buscar.TabIndex = 1;
-            this.Buscar.Text = "Buscar";
-            this.Buscar.UseVisualStyleBackColor = true;
-            this.Buscar.Click += new System.EventHandler(this.Buscar_Click);
+            this.buttonBuscarUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonBuscarUsuario.Location = new System.Drawing.Point(713, 46);
+            this.buttonBuscarUsuario.Name = "buttonBuscarUsuario";
+            this.buttonBuscarUsuario.Size = new System.Drawing.Size(96, 24);
+            this.buttonBuscarUsuario.TabIndex = 1;
+            this.buttonBuscarUsuario.Text = "Buscar";
+            this.buttonBuscarUsuario.UseVisualStyleBackColor = true;
+            this.buttonBuscarUsuario.Click += new System.EventHandler(this.buttonBuscarUsuario_Click);
             // 
             // usuarioBindingSource
             // 
@@ -117,7 +121,7 @@
             this.usuarioBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.usuarioBindingNavigator.Name = "usuarioBindingNavigator";
             this.usuarioBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.usuarioBindingNavigator.Size = new System.Drawing.Size(1449, 27);
+            this.usuarioBindingNavigator.Size = new System.Drawing.Size(1594, 27);
             this.usuarioBindingNavigator.TabIndex = 2;
             this.usuarioBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -221,6 +225,9 @@
             this.usuarioDataGridView.AllowUserToAddRows = false;
             this.usuarioDataGridView.AllowUserToDeleteRows = false;
             this.usuarioDataGridView.AllowUserToOrderColumns = true;
+            this.usuarioDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.usuarioDataGridView.AutoGenerateColumns = false;
             this.usuarioDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.usuarioDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -236,7 +243,7 @@
             this.usuarioDataGridView.ReadOnly = true;
             this.usuarioDataGridView.RowHeadersWidth = 51;
             this.usuarioDataGridView.RowTemplate.Height = 24;
-            this.usuarioDataGridView.Size = new System.Drawing.Size(931, 263);
+            this.usuarioDataGridView.Size = new System.Drawing.Size(1046, 483);
             this.usuarioDataGridView.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
@@ -303,17 +310,19 @@
             this.grupoUsuariosDataGridView.AllowUserToAddRows = false;
             this.grupoUsuariosDataGridView.AllowUserToDeleteRows = false;
             this.grupoUsuariosDataGridView.AllowUserToOrderColumns = true;
+            this.grupoUsuariosDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grupoUsuariosDataGridView.AutoGenerateColumns = false;
             this.grupoUsuariosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grupoUsuariosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4});
             this.grupoUsuariosDataGridView.DataSource = this.grupoUsuariosBindingSource;
-            this.grupoUsuariosDataGridView.Location = new System.Drawing.Point(954, 98);
+            this.grupoUsuariosDataGridView.Location = new System.Drawing.Point(1069, 98);
             this.grupoUsuariosDataGridView.Name = "grupoUsuariosDataGridView";
             this.grupoUsuariosDataGridView.ReadOnly = true;
             this.grupoUsuariosDataGridView.RowHeadersWidth = 51;
             this.grupoUsuariosDataGridView.RowTemplate.Height = 24;
-            this.grupoUsuariosDataGridView.Size = new System.Drawing.Size(300, 263);
+            this.grupoUsuariosDataGridView.Size = new System.Drawing.Size(497, 483);
             this.grupoUsuariosDataGridView.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn4
@@ -325,67 +334,72 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // Alterar
+            // buttonAlterarUsuario
             // 
-            this.Alterar.Location = new System.Drawing.Point(706, 47);
-            this.Alterar.Name = "Alterar";
-            this.Alterar.Size = new System.Drawing.Size(75, 23);
-            this.Alterar.TabIndex = 5;
-            this.Alterar.Text = "Alterar";
-            this.Alterar.UseVisualStyleBackColor = true;
+            this.buttonAlterarUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAlterarUsuario.Location = new System.Drawing.Point(825, 48);
+            this.buttonAlterarUsuario.Name = "buttonAlterarUsuario";
+            this.buttonAlterarUsuario.Size = new System.Drawing.Size(75, 24);
+            this.buttonAlterarUsuario.TabIndex = 5;
+            this.buttonAlterarUsuario.Text = "Alterar";
+            this.buttonAlterarUsuario.UseVisualStyleBackColor = true;
             // 
-            // Excluir
+            // buttonAdicionarUsuario
             // 
-            this.Excluir.Location = new System.Drawing.Point(787, 48);
-            this.Excluir.Name = "Excluir";
-            this.Excluir.Size = new System.Drawing.Size(75, 23);
-            this.Excluir.TabIndex = 5;
-            this.Excluir.Text = "Adicionar";
-            this.Excluir.UseVisualStyleBackColor = true;
+            this.buttonAdicionarUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAdicionarUsuario.Location = new System.Drawing.Point(906, 48);
+            this.buttonAdicionarUsuario.Name = "buttonAdicionarUsuario";
+            this.buttonAdicionarUsuario.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdicionarUsuario.TabIndex = 5;
+            this.buttonAdicionarUsuario.Text = "Adicionar";
+            this.buttonAdicionarUsuario.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonExcluirUsuario
             // 
-            this.button4.Location = new System.Drawing.Point(868, 48);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Excluir";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonExcluirUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExcluirUsuario.Location = new System.Drawing.Point(1001, 48);
+            this.buttonExcluirUsuario.Name = "buttonExcluirUsuario";
+            this.buttonExcluirUsuario.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcluirUsuario.TabIndex = 5;
+            this.buttonExcluirUsuario.Text = "Excluir";
+            this.buttonExcluirUsuario.UseVisualStyleBackColor = true;
             // 
-            // Adicionar
+            // buttonAdicionarGrupoUsuario
             // 
-            this.Adicionar.Location = new System.Drawing.Point(972, 48);
-            this.Adicionar.Name = "Adicionar";
-            this.Adicionar.Size = new System.Drawing.Size(75, 23);
-            this.Adicionar.TabIndex = 5;
-            this.Adicionar.Text = "Adicionar";
-            this.Adicionar.UseVisualStyleBackColor = true;
+            this.buttonAdicionarGrupoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAdicionarGrupoUsuario.Location = new System.Drawing.Point(1105, 48);
+            this.buttonAdicionarGrupoUsuario.Name = "buttonAdicionarGrupoUsuario";
+            this.buttonAdicionarGrupoUsuario.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdicionarGrupoUsuario.TabIndex = 5;
+            this.buttonAdicionarGrupoUsuario.Text = "Adicionar";
+            this.buttonAdicionarGrupoUsuario.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonExcluirGrupoUsuario
             // 
-            this.button2.Location = new System.Drawing.Point(1095, 48);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Excluir";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonExcluirGrupoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExcluirGrupoUsuario.Location = new System.Drawing.Point(1228, 48);
+            this.buttonExcluirGrupoUsuario.Name = "buttonExcluirGrupoUsuario";
+            this.buttonExcluirGrupoUsuario.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcluirGrupoUsuario.TabIndex = 5;
+            this.buttonExcluirGrupoUsuario.Text = "Excluir";
+            this.buttonExcluirGrupoUsuario.UseVisualStyleBackColor = true;
             // 
-            // Form1BuscarUsuariocs
+            // FormBuscarUsuariocs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1449, 610);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.Adicionar);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.Excluir);
-            this.Controls.Add(this.Alterar);
+            this.ClientSize = new System.Drawing.Size(1594, 615);
+            this.Controls.Add(this.buttonExcluirGrupoUsuario);
+            this.Controls.Add(this.buttonAdicionarGrupoUsuario);
+            this.Controls.Add(this.buttonExcluirUsuario);
+            this.Controls.Add(this.buttonAdicionarUsuario);
+            this.Controls.Add(this.buttonAlterarUsuario);
             this.Controls.Add(this.grupoUsuariosDataGridView);
             this.Controls.Add(this.usuarioDataGridView);
             this.Controls.Add(this.usuarioBindingNavigator);
-            this.Controls.Add(this.Buscar);
+            this.Controls.Add(this.buttonBuscarUsuario);
             this.Controls.Add(this.textBox1);
-            this.Name = "Form1BuscarUsuariocs";
+            this.Name = "FormBuscarUsuariocs";
             this.Text = "Gestao de usuario";
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingNavigator)).EndInit();
@@ -402,7 +416,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button Buscar;
+        private System.Windows.Forms.Button buttonBuscarUsuario;
         private System.Windows.Forms.BindingSource usuarioBindingSource;
         private System.Windows.Forms.BindingNavigator usuarioBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
@@ -427,10 +441,10 @@
         private System.Windows.Forms.BindingSource grupoUsuariosBindingSource;
         private System.Windows.Forms.DataGridView grupoUsuariosDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.Button Alterar;
-        private System.Windows.Forms.Button Excluir;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button Adicionar;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonAlterarUsuario;
+        private System.Windows.Forms.Button buttonAdicionarUsuario;
+        private System.Windows.Forms.Button buttonExcluirUsuario;
+        private System.Windows.Forms.Button buttonAdicionarGrupoUsuario;
+        private System.Windows.Forms.Button buttonExcluirGrupoUsuario;
     }
 }
