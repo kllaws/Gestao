@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAppPrincipal
 {
-    public partial class FormBuscarGrupoUsuario : Form
+    public partial class FormBuscarGrupoUsuario: Form
     {
         public FormBuscarGrupoUsuario()
         {
             InitializeComponent();
+        }
+
+        private void buttonBuscarGrupoUsuario_Click(object sender, EventArgs e)
+        { 
         }
     }
 }

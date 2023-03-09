@@ -70,7 +70,8 @@ using System.Diagnostics;
                         usuario.CPF = rd["CPF"].ToString();
                         usuario.Email = rd["Email"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
-
+                        GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
+                        usuario.GrupoUsuarios = GrupoUsuarioDAL.BuscarPorIdUsuario(usuario.Id);
                         usuarios.Add(usuario);
                     }
                 }

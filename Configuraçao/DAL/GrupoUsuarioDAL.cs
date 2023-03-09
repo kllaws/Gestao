@@ -1,5 +1,6 @@
 ﻿using Models;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 namespace DAL
 {
@@ -56,6 +57,11 @@ namespace DAL
         }
         public void Excluir(int _id)
         {
+        }
+
+        internal static List<GrupoUsuario> BuscarPorIdUsuario(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
