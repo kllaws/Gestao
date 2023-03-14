@@ -1,28 +1,30 @@
-﻿namespace BLL
+﻿using ConsoleAppPrincipal;
+
+namespace BLL
 {
-    internal class UsuarioDAL
+    internal class GrupoUsuarioDAL
     {
-        internal void Alterar(Usuario usuario)
+        internal void ALterar(GrupoUsuario grupoUsuario)
         {
             throw new NotImplementedException();
         }
 
-        internal Usuario BuscarPorNomeUsuario(string nomeUsuario)
+        internal GrupoUsuario BuscarPorID(int idGrupoUsuario)
         {
             throw new NotImplementedException();
         }
 
-        internal List<Usuario> BuscarTodos()
+        internal List<GrupoUsuario> BuscarTodosGrupos()
         {
             throw new NotImplementedException();
         }
 
-        internal void Excluir(int id)
+        internal void Excluir(int idGrupoUsuario)
         {
             throw new NotImplementedException();
         }
 
-        internal void Inserir(Usuario usuario)
+        internal void Inserir(GrupoUsuario grupoUsuario)
         {
             throw new NotImplementedException();
         }

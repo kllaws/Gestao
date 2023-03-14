@@ -221,7 +221,7 @@ namespace ConsoleAppPrincipal
             {
                 Console.WriteLine("\nExcluir Permissão");
                 Console.WriteLine("Informe o Id que deseja excluir: ");
-                permissao.IdDescricao = Convert.ToInt32(Console.ReadLine());
+                permissao.IDDescricao = Convert.ToInt32(Console.ReadLine());
                 permissaoBLL.Excluir(permissao);
                 Console.WriteLine("Permissão excluúida com sucesso. \n\nDeseja realizar uma nova Exclusão: [1] Sim [2] Não ");
                 sn = Convert.ToInt32(Console.ReadLine());
@@ -306,11 +306,11 @@ namespace ConsoleAppPrincipal
             {
                 Console.WriteLine("\nAltera Permissão\n\n");
                 Console.WriteLine("Informe o Id Permissão que deseja alterar: ");
-                permissao.IdDescricao = Convert.ToInt32(Console.ReadLine());
+                permissao.IDDescricao = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Informe o novo Nome da Descricao");
                 permissao.Descricao = Console.ReadLine();
 
-                permissaoBLL.Alterar(permissao);
+                PermissaoBLL.Alterar(permissao);
                 Console.WriteLine("Permissão alterada com sucesso.\n\nDeseja alterar uma nova Permissão: [1] Sim [2] Nao ");
                 sn = Convert.ToInt32(Console.ReadLine());
                 Console.Clear();
@@ -328,7 +328,7 @@ namespace ConsoleAppPrincipal
                 Console.WriteLine("\nCria Permissão\n\n");
                 Console.WriteLine("Insira o nome da Permissão: ");
                 permissao.Descricao = Console.ReadLine();
-                permissaoBLL.Inserir(permissao);
+                PermissaoBLL.Inserir(permissao);
                 Console.WriteLine("Permissão criado com sucesso.\n\nDeseja criar uma nova Permissão: [1] Sim [2] Nao ");
                 sn = Convert.ToInt32(Console.ReadLine());
                 Console.Clear();
@@ -446,7 +446,7 @@ namespace ConsoleAppPrincipal
             Console.WriteLine("Informe o Id da Permissão: ");
             int id = Convert.ToInt32(Console.ReadLine());
             Permissao permissao = permissaoBLL.BuscarPorId(id);
-            Console.WriteLine("IdDescricao: " + permissao.IdDescricao);
+            Console.WriteLine("IdDescricao: " + permissao.IDDescricao);
             Console.WriteLine("Descricao: " + permissao.Descricao);
             Console.WriteLine("\n\nPressione ENTER para continuar.");
             Console.ReadLine();

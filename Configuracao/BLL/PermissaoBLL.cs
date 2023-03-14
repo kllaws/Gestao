@@ -1,109 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsoleAppPrincipal;
+﻿using ConsoleAppPrincipal;
 
 namespace BLL
 {
-    internal class PermissaoBLL
+    public class PermissaoBLL
     {
-        public Usuario Buscar(string _nomeUsuario)
+        public static void Inserir(Permissao Permissao)
         {
-
-            SqlConnection cn = new SqlConnection();
-            try
+            if (Permissao.Descricao.Length <= 30 || Permissao.Descricao.Length >= 250)
             {
-                cn.ConnectionString = Conexao.StringDeConexao;
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = cn;
-                cmd.CommandText = @"FROM TABLE Permissao SET Descricao = @Descricao WHERE IdDescricao = @IdDescricao";
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _usuario.IdDescricao);
-                cn.Open();
-                cmd.ExecuteScalar();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu um erro ao tentar atualizar uma descrição no banco: " + ex.Message);
-            }
-            finally
-
-            {
-                cn.Close();
-            }
-            return new Usuario();
-        }
-        public void Alterar(Usuario _usuario)
-        {
-
-            SqlConnection cn = new SqlConnection();
-            try
-            {
-                cn.ConnectionString = Conexao.StringDeConexao;
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = cn;
-                cmd.CommandText = @"UPDATE Permissao SET Descricao = @Descricao WHERE IdDescricao = @IdDescricao";
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _usuario.IdDescricao);
-                cn.Open();
-                cmd.ExecuteScalar();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu um erro ao tentar atualizar uma descrição no banco: " + ex.Message);
-            }
-            finally
-            {
-                cn.Close();
+                throw new Exception("A descrição deve ter entre 30 e 250 caracteres.");
             }
 
-        }
-        public void Excluir(int _id)
-        {
-
-            SqlConnection cn = new SqlConnection();
-            try
-            {
-                cn.ConnectionString = Conexao.StringDeConexao;
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = cn;
-                cmd.CommandText = @"DELETE FROM Permissao WHERE IdDescricao = @IdDescricao";
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _usuario.IdDescricao);
-                cn.Open();
-                cmd.ExecuteScalar();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu um erro ao tentar excluir uma descrição no banco: " + ex.Message);
-            }
-            finally
-            {
-                cn.Close();
-            }
-
+            PermissaoDAL permissaoDAL = new PermissaoDAL();
+            permissaoDAL.Inserir(Permissao);
         }
 
-        internal void Excluir(Permissao permissao)
+        public static void Alterar(Permissao Permissao)
         {
-            throw new NotImplementedException();
+            if (Permissao.Descricao.Length <= 30 || Permissao.Descricao.Length >= 250)
+            {
+                throw new Exception("A descrição deve ter entre 30 e 250 caracteres.");
+            }
+
+            PermissaoDAL permissaoDAL = new PermissaoDAL();
+            permissaoDAL.Alterar(Permissao);
         }
 
-        internal void Alterar(Permissao permissao)
+        public void Excluir(int _IdDescricao)
         {
-            throw new NotImplementedException();
+            PermissaoDAL permissaoDAL = new PermissaoDAL();
+            permissaoDAL.Excluir(_IdDescricao);
         }
 
-        internal void Inserir(Permissao permissao)
+        public static  List<Permissao> BuscarPorIDDescricao(int IdDescricao)
         {
-            throw new NotImplementedException();
+            PermissaoDAL permissaoDAL = new PermissaoDAL();
+            return permissaoDAL.BuscarPorIDDescricao(IdDescricao);
         }
 
-        internal Permissao BuscarPorId(int id)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
