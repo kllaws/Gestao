@@ -40,7 +40,7 @@ namespace DAL
                 cmd.Connection = cn;
                 cmd.CommandText = @"FROM TABLE Permissao SET Descricao = @Descricao WHERE IdDescricao = @IdDescricao";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _usuario.IdDescricao);
+                cmd.Parameters.AddWithValue("@IdDescricao", _usuario.IDDescricao);
                 cn.Open();
                 cmd.ExecuteScalar();
             }
@@ -66,7 +66,7 @@ namespace DAL
                 cmd.Connection = cn;
                 cmd.CommandText = @"UPDATE Permissao SET Descricao = @Descricao WHERE IdDescricao = @IdDescricao";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _usuario.IdDescricao);
+                cmd.Parameters.AddWithValue("@IdDescricao", _usuario.IDDescricao);
                 cn.Open();
                 cmd.ExecuteScalar();
             }
@@ -91,7 +91,7 @@ namespace DAL
                 cmd.Connection = cn;
                 cmd.CommandText = @"DELETE FROM Permissao WHERE IdDescricao = @IdDescricao";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _usuario.IdDescricao);
+                cmd.Parameters.AddWithValue("@IdDescricao", _usuario.IDDescricao);
                 cn.Open();
                 cmd.ExecuteScalar();
             }

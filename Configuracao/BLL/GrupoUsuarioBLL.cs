@@ -60,6 +60,16 @@ namespace BLL
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Excluir(_id);
         }
+
+        internal void Excluir(Usuario usuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Usuario BuscarUsuarioPorNome(string? nomeUsuario)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleAppPrincipal;
 
 namespace BLL
 {
@@ -83,6 +84,26 @@ namespace BLL
                 cn.Close();
             }
 
+        }
+
+        internal void Excluir(Permissao permissao)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void Alterar(Permissao permissao)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void Inserir(Permissao permissao)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Permissao BuscarPorId(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
