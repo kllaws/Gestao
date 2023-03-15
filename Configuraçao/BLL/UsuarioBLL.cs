@@ -52,6 +52,8 @@ namespace BLL
             return usuarioDAL.BuscarPorNomeUsuario(_nomeUsuario);
         }
 
+      
+            
         private static void Excluir(int _id)
         {
             UsuarioDAL usuarioDAL = new UsuarioDAL();
@@ -61,7 +63,10 @@ namespace BLL
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             return usuarioDAL.BuscarTodos();
         }
-    
+        public void Alterar (Usuario _usuario, string _confirmacaoDeSenha)
+        {
 
+        }
+       
     }
 }
