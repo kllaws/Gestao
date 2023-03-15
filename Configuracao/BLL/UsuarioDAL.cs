@@ -7,6 +7,11 @@
             throw new NotImplementedException();
         }
 
+        internal Usuario BuscarPorId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         internal Usuario BuscarPorNomeUsuario(string nomeUsuario)
         {
             throw new NotImplementedException();

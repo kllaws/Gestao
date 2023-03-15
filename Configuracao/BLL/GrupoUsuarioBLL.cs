@@ -15,15 +15,15 @@ namespace BLL
             grupoUsuarioDAL.Inserir(GrupoUsuario);
         }
 
-        public static void Alterar(GrupoUsuario _GrupoUsuario)
+        public static void Alterar(GrupoUsuario GrupoUsuario)
         {
-            if (_GrupoUsuario.NomeGrupo.Length <= 15 || _GrupoUsuario.NomeGrupo.Length >= 100)
+            if (GrupoUsuario.NomeGrupo.Length <= 15 || GrupoUsuario.NomeGrupo.Length >= 100)
             {
                 throw new Exception("O nome do grupo do grupo deve ter entre 15 e 100 caracteres.");
             }
 
             GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-            grupoUsuarioDAL.ALterar(_GrupoUsuario);
+            grupoUsuarioDAL.ALterar(GrupoUsuario);
         }
 
         public void Excluir(int _IdGrupoUsuario)

@@ -32,7 +32,7 @@ namespace BLL
             permissaoDAL.Excluir(_IdDescricao);
         }
 
-        public static  List<Permissao> BuscarPorIDDescricao(int IdDescricao)
+        public static List<Permissao> BuscarPorIDDescricao(int IdDescricao)
         {
             PermissaoDAL permissaoDAL = new PermissaoDAL();
             return permissaoDAL.BuscarPorIDDescricao(IdDescricao);
