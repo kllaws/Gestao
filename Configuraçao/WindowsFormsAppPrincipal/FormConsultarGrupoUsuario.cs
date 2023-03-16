@@ -17,6 +17,19 @@ namespace WindowsFormsAppPrincipal
             InitializeComponent();
         }
 
-        
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSelecionar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -10,15 +10,16 @@ namespace WindowsFormsAppPrincipal
         private bool alterar;
         private bool v;
         private int id;
-        private object usuarioBindingSource;
 
-        public FormCadastroUsuario()
+
+        //public FormCadastroUsuario()
+        //{
+        //    InitializeComponent();
+        //}
+
+        public FormCadastroUsuario(bool v = false, int id = 0)
         {
             InitializeComponent();
-        }
-
-        public FormCadastroUsuario(bool v, int id)
-        {
             this.v = v;
             this.id = id;
         }
@@ -33,8 +34,8 @@ namespace WindowsFormsAppPrincipal
             UsuarioBLL usuarioBLL = new UsuarioBLL();
             try
             {
-              
-                //    usuarioBindingSource.EndEdit();
+
+                usuarioBindingSource.EndEdit();
                 if (!alterar)
                     usuarioBLL.Inserir(((Usuario)usuarioBindingSource.Current), confirmacaoTextBox.Text);
                 else
@@ -48,14 +49,14 @@ namespace WindowsFormsAppPrincipal
 
                 MessageBox.Show(ex.Message);
             }
-           // usuarioBindingSource.EndEdit();
-          //  usuarioBLL.Inserir((Usuario)usuarioBindingSource.Current, confirmacaoTextBox.Text);
+            usuarioBindingSource.EndEdit();
+            usuarioBLL.Inserir((Usuario)usuarioBindingSource.Current, confirmacaoTextBox.Text);
         }
 
         private void FormCadastroUsuario_Load(object sender, EventArgs e)
         {
-           // if (!alterar)
-           // usuarioBindingSource.AddNew();
+            if (!alterar)
+                usuarioBindingSource.AddNew();
         }
     }
 }

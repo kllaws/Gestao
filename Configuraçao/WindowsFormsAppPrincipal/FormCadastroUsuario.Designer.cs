@@ -40,13 +40,13 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.nomeTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cPFTextBox = new System.Windows.Forms.TextBox();
             this.ativoCheckBox = new System.Windows.Forms.CheckBox();
             this.senhaTextBox = new System.Windows.Forms.TextBox();
             this.nomeUsuarioTextBox = new System.Windows.Forms.TextBox();
             this.confirmacaoTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.usuarioBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             nomeLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
             cPFLabel = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             senhaLabel = new System.Windows.Forms.Label();
             nomeUsuarioLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nomeLabel
@@ -173,11 +173,15 @@
             this.emailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usuarioBindingSource1, "Email", true));
+            this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usuarioBindingSource, "Email", true));
             this.emailTextBox.Location = new System.Drawing.Point(189, 115);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(678, 22);
             this.emailTextBox.TabIndex = 6;
+            // 
+            // usuarioBindingSource
+            // 
+            this.usuarioBindingSource.DataSource = typeof(Models.Usuario);
             // 
             // cPFTextBox
             // 
@@ -240,10 +244,6 @@
             this.label2.Text = "Cadastro de usuário";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // usuarioBindingSource1
-            // 
-            this.usuarioBindingSource1.DataSource = typeof(Models.Usuario);
-            // 
             // FormCadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -274,7 +274,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCadastroUsuario";
             this.Load += new System.EventHandler(this.FormCadastroUsuario_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,7 +284,6 @@
 
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.Button buttonCancelar;
-       // private System.Windows.Forms.BindingSource usuarioBindingSource;
         private System.Windows.Forms.TextBox nomeTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.TextBox cPFTextBox;
@@ -293,6 +292,6 @@
         private System.Windows.Forms.TextBox nomeUsuarioTextBox;
         private System.Windows.Forms.TextBox confirmacaoTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.BindingSource usuarioBindingSource1;
+        private System.Windows.Forms.BindingSource usuarioBindingSource;
     }
 }
