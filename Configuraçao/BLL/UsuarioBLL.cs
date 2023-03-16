@@ -2,7 +2,6 @@
 using Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BLL
 {
@@ -53,11 +52,7 @@ namespace BLL
         }
 
       
-            
-        private static void Excluir(int _id)
-        {
-            UsuarioDAL usuarioDAL = new UsuarioDAL();
-        }
+        
         public List<Usuario> BuscarTodos()
         {
             UsuarioDAL usuarioDAL = new UsuarioDAL();
@@ -67,6 +62,10 @@ namespace BLL
         {
 
         }
-       
+
+        public void Excluir(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

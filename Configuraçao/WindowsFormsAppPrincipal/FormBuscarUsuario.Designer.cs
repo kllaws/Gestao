@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsAppPrincipal
 {
-    partial class FormBuscarUsuariocs
+    partial class FormBuscarUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscarUsuariocs));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscarUsuario));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonBuscarUsuario = new System.Windows.Forms.Button();
             this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -343,6 +343,7 @@
             this.buttonAlterarUsuario.TabIndex = 5;
             this.buttonAlterarUsuario.Text = "Alterar";
             this.buttonAlterarUsuario.UseVisualStyleBackColor = true;
+            this.buttonAlterarUsuario.Click += new System.EventHandler(this.buttonAlterarUsuario_Click);
             // 
             // buttonAdicionarUsuario
             // 
@@ -353,16 +354,18 @@
             this.buttonAdicionarUsuario.TabIndex = 5;
             this.buttonAdicionarUsuario.Text = "Adicionar";
             this.buttonAdicionarUsuario.UseVisualStyleBackColor = true;
+            this.buttonAdicionarUsuario.Click += new System.EventHandler(this.buttonAdicionarUsuario_Click);
             // 
             // buttonExcluirUsuario
             // 
             this.buttonExcluirUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExcluirUsuario.Location = new System.Drawing.Point(800, 48);
+            this.buttonExcluirUsuario.Location = new System.Drawing.Point(795, 46);
             this.buttonExcluirUsuario.Name = "buttonExcluirUsuario";
             this.buttonExcluirUsuario.Size = new System.Drawing.Size(75, 23);
             this.buttonExcluirUsuario.TabIndex = 5;
             this.buttonExcluirUsuario.Text = "Excluir";
             this.buttonExcluirUsuario.UseVisualStyleBackColor = true;
+            this.buttonExcluirUsuario.Click += new System.EventHandler(this.buttonExcluirUsuario_Click);
             // 
             // buttonAdicionarGrupoUsuario
             // 
@@ -373,6 +376,7 @@
             this.buttonAdicionarGrupoUsuario.TabIndex = 5;
             this.buttonAdicionarGrupoUsuario.Text = "Adicionar";
             this.buttonAdicionarGrupoUsuario.UseVisualStyleBackColor = true;
+            this.buttonAdicionarGrupoUsuario.Click += new System.EventHandler(this.buttonAdicionarGrupoUsuario_Click);
             // 
             // buttonExcluirGrupoUsuario
             // 
@@ -384,7 +388,7 @@
             this.buttonExcluirGrupoUsuario.Text = "Excluir";
             this.buttonExcluirGrupoUsuario.UseVisualStyleBackColor = true;
             // 
-            // FormBuscarUsuariocs
+            // FormBuscarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -399,7 +403,7 @@
             this.Controls.Add(this.usuarioBindingNavigator);
             this.Controls.Add(this.buttonBuscarUsuario);
             this.Controls.Add(this.textBox1);
-            this.Name = "FormBuscarUsuariocs";
+            this.Name = "FormBuscarUsuario";
             this.Text = "Gestao de usuario";
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingNavigator)).EndInit();
