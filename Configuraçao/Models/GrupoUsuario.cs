@@ -10,5 +10,6 @@ namespace Models
 
         public string NomeGrupo { get; set; }
         public List<Permissao> Permissao { get; set; }
+        public int IdGrupoUser { get; set; }
     }
 }
