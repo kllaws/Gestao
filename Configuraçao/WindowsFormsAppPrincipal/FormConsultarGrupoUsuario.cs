@@ -12,6 +12,8 @@ namespace WindowsFormsAppPrincipal
 {
     public partial class FormConsultarGrupoUsuario : Form
     {
+        public int Id { get; internal set; }
+
         public FormConsultarGrupoUsuario()
         {
             InitializeComponent();

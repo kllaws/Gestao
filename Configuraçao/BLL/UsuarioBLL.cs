@@ -67,5 +67,10 @@ namespace BLL
         {
             throw new NotImplementedException();
         }
+
+        public void RemoverGrupoUsuario(int idUsuario, int idGrupoUsuario)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
