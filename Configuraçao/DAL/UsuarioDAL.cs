@@ -234,5 +234,15 @@ namespace DAL
         {
             throw new Exception();
         }
+
+        public void RemoverGrupoUsuario(int idUsuario, int idGrupoUsuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ValidarPermissao(object idUsuarioLogado, int idPermissao)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
