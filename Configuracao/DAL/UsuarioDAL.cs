@@ -1,5 +1,6 @@
 ﻿
 using Models;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DAL
@@ -122,6 +123,11 @@ namespace DAL
             {
                 cn.Close();
             }
+        }
+
+        public void ToString(Usuario usuario)
+        {
+            throw new NotImplementedException();
         }
     }
 }

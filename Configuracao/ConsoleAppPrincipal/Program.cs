@@ -1,6 +1,4 @@
-﻿using BLL;
-using Models;
-using System;
+﻿using Models;
 
 namespace ConsoleAppPrincipal
 {
