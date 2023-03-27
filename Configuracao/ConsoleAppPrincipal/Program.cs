@@ -1,8 +1,4 @@
-﻿using BLL;
-using DAL;
-using Models;
-
-namespace ConsoleAppPrincipal
+﻿namespace ConsoleAppPrincipal
 {
     internal class Program
     {
