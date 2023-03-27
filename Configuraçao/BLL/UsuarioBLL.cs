@@ -9,56 +9,31 @@ namespace BLL
     {
         public void Inserir(Usuario _usuario, string _confirmacaoDeSenha)
         {
-            ValidarPermissao(4);
+            ValidarPermissao(1);
 
             ValidarDados(_usuario, _confirmacaoDeSenha);
 
             Usuario usuario = new Usuario();
-            usuario = BuscarPorNomeUsuario(_usuario.NomeUsuario);
+
+            usuario = BuscarUsuarioPorNome(_usuario.NomeUsuario);
             if (usuario.NomeUsuario == _usuario.NomeUsuario)
-                throw new Exception("Já existe um usuário com este nome");
+                throw new Exception("Usuário já existente");
 
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Inserir(_usuario);
         }
-        public void ValidarPermissao(int _idPermissao)
+        public void ValidarPermissao(int _idDescricao)
         {
-            if (!new UsuarioDAL().ValidarPermissao(Constantes.IdUsuarioLogado, _idPermissao))
-                throw new Exception("Você não tem permissão para executar esta operação.");
+            if (!new UsuarioDAL().ValidarPermissao(Constantes.IdUsuarioLogado, _idDescricao))
+                throw new Exception("Você não tem permissão para executar esta operação");
         }
-
-        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
-        {
-            if (String.IsNullOrEmpty(_nomeUsuario))
-                throw new Exception("Informe o nome do usuário.");
-
-            UsuarioDAL usuarioDAL = new UsuarioDAL();
-            return usuarioDAL.BuscarPorNomeUsuario(_nomeUsuario);
-        }
-        public Usuario BuscarPorId(int _id)
-        {
-            UsuarioDAL usuarioDAL = new UsuarioDAL();
-            return usuarioDAL.BuscarPorId(_id);
-        }
-        public List<Usuario> BuscarTodos()
-        {
-            UsuarioDAL usuarioDAL = new UsuarioDAL();
-            return usuarioDAL.BuscarTodos();
-        }
-        public void Alterar(Usuario _usuario, string _confirmacaoDeSenha)
-        {
-            ValidarDados(_usuario, _confirmacaoDeSenha);
-
-            UsuarioDAL usuarioDAL = new UsuarioDAL();
-            usuarioDAL.Alterar(_usuario);
-        }
-        private static void ValidarDados(Usuario _usuario, string _confirmacaoDeSenha)
+        private void ValidarDados(Usuario _usuario, string _confirmacaoDeSenha)
         {
             if (_usuario.NomeUsuario.Length <= 3 || _usuario.NomeUsuario.Length >= 50)
                 throw new Exception("O nome de usuário deve ter mais de três caracteres.");
 
             if (_usuario.NomeUsuario.Contains(" "))
-                throw new Exception("O nome de usuário não pode conter espaço");
+                throw new Exception("O nome de usuário não pode conter espaço em branco.");
 
             if (_usuario.Senha.Contains("1234567"))
                 throw new Exception("Não é permitido um número sequencial.");
@@ -67,24 +42,57 @@ namespace BLL
                 throw new Exception("A senha deve ter entre 7 e 11 caracteres.");
 
             if (_confirmacaoDeSenha != _usuario.Senha)
-                throw new Exception("O campo senha e a confirmação de senha não são iguais.");
+                throw new Exception("O campo senha e a confirmação da senha não são iguais.");
+        }
+        public Usuario BuscarUsuarioPorNome(string _nomeUsuario)
+        {
+            ValidarPermissao(4);
+            if (String.IsNullOrEmpty(_nomeUsuario))
+                throw new Exception("Informe o nome do usuário.");
+
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            return usuarioDAL.BuscarUsuarioPorNome(_nomeUsuario);
+        }
+        public List<Usuario> BuscarTodos()
+        {
+            ValidarPermissao(4);
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            return usuarioDAL.BuscarTodos();
+        }
+        public Usuario BuscarPorId(int _idUsuario)
+        {
+            ValidarPermissao(4);
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            return usuarioDAL.BuscarPorId(_idUsuario);
+        }
+        public void Alterar(Usuario _alterarUsuario, string _confirmacaoDeSenha)
+        {
+            ValidarPermissao(2);
+            ValidarDados(_alterarUsuario, _confirmacaoDeSenha);
+
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            usuarioDAL.Alterar(_alterarUsuario);
         }
         public void Excluir(int _id)
         {
+            ValidarPermissao(3);
+
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Excluir(_id);
         }
         public void AdicionarGrupo(int _idUsuario, int _idGrupoUsuario)
         {
+            ValidarPermissao(10);
             if (new UsuarioDAL().ExisteRelacionamento(_idUsuario, _idGrupoUsuario))
-                return;
-
+            {
+                throw new Exception("Usuário já vinculado ao grupo.");
+            }
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.AdicionarGrupo(_idUsuario, _idGrupoUsuario);
         }
-
         public void RemoverGrupoUsuario(int _idUsuario, int _idGrupoUsuario)
         {
+            ValidarPermissao(7);
             new UsuarioDAL().RemoverGrupoUsuario(_idUsuario, _idGrupoUsuario);
         }
     }
