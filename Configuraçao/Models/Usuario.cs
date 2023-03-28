@@ -14,7 +14,7 @@ namespace Models
         public string Senha { get; set; }
         public bool Ativo { get; set; }
         public List<GrupoUsuario> GrupoUsuarios { get; set; }
-        
+        public object IdUsuario { get; set; }
 
         public void Add(Usuario usuario)
         {

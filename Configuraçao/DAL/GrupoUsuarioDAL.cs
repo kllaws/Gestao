@@ -16,7 +16,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"INSERT INTO GrupoUsuario(NomeGrupo) VALUES (@NomeGrupo)";
+                cmd.CommandText = @"INSERT INTO GrupoUsuario(GrupoUsuario) VALUES (@NomeGrupo)";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@NomeGrupo", _grupousuario.NomeGrupo);
                 cn.Open();
@@ -44,7 +44,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"UPDATE GrupoUsuario SET NomeGrupo = @NomeGrupo WHERE IdGrupoUsuario = @IdGrupoUsuario";
+                cmd.CommandText = @"UPDATE GrupoUsuario SET NomeGrupo = @NomeGrupo WHERE Id = @IdGrupoUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@NomeGrupo", _grupousuario.NomeGrupo);
                 cn.Open();
@@ -64,9 +64,9 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection= cn;
-                cmd.CommandText = @"DELETE FROM GrupoUsuario WHERE ID = @ID";
+                cmd.CommandText = @"DELETE FROM GrupoUsuario WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@ID", id);
+                cmd.Parameters.AddWithValue("@Id", id);
 
                 cn.Open();
                 cmd.ExecuteScalar();
@@ -97,7 +97,7 @@ namespace DAL
                 while (dr.Read())
                 {
                     GrupoUsuario grupoUsuario= new GrupoUsuario();
-                    grupoUsuario.IdGrupoUser = Convert.ToInt32(dr["ID"]);
+                    grupoUsuario.IdGrupoUser = Convert.ToInt32(dr["Id"]);
                     grupoUsuario.NomeGrupo = dr["NomeGrupo"].ToString();
                     listaGrupoUsuario.Add(grupoUsuario);
                 }
@@ -124,7 +124,7 @@ namespace DAL
             {
                 cn.ConnectionString= Conexao.StringDeConexao;
                 cmd.Connection= cn;
-                cmd.CommandText = "SELECT ID, NomeGrupo FROM GrupoUsuario WHERE NomeGrupo = @NomeDoGrupo";
+                cmd.CommandText = "SELECT Id, NomeGrupo FROM GrupoUsuario WHERE NomeGrupo = @NomeDoGrupo";
                 cmd.CommandType = System.Data.CommandType.Text ;
                 cmd.Parameters.AddWithValue("@NomeGrupo", _nome);
                 cn.Open();
@@ -133,7 +133,7 @@ namespace DAL
                     if (rd.Read())
                     {
                         grupousuario = new GrupoUsuario();
-                        grupousuario.IdGrupoUser = Convert.ToInt32(rd["ID"]);
+                        grupousuario.IdGrupoUser = Convert.ToInt32(rd["Id"]);
                         grupousuario.NomeGrupo = rd["NomeGrupo"].ToString();
                         
                     }
@@ -164,9 +164,9 @@ namespace DAL
             {
                 cn.ConnectionString= Conexao.StringDeConexao;
                 cmd.Connection= cn;
-                cmd.CommandText = @"SELECT TOP 100 ID, NomeGrupoUsuario FROMGrupoUsuario WHERE ID = @ID";
+                cmd.CommandText = @"SELECT TOP 100 Id, GrupoUsuario FROM GrupoUsuario WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text ;
-                cmd.Parameters.AddWithValue("@ID", _idGrupo);
+                cmd.Parameters.AddWithValue("@Id", _idGrupo);
 
                 cn.Open(); 
 
@@ -174,7 +174,7 @@ namespace DAL
                 if (dr.Read())
                 {
                     grupoUsuario = new GrupoUsuario();
-                    grupoUsuario.IdGrupoUser = Convert.ToInt32(dr["ID"]);
+                    grupoUsuario.IdGrupoUser = Convert.ToInt32(dr["Id"]);
                     grupoUsuario.NomeGrupo = dr["NomeGrupo"].ToString();
                     listaGrupoUsuario.Add(grupoUsuario);
                 }
