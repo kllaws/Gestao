@@ -13,6 +13,10 @@ namespace Models
         public string Senha { get; set; }
         public bool Ativo { get; set; }
         public List<GrupoUsuario> GrupoUsuarios { get; set; }
+<<<<<<< HEAD
+=======
+        public int IDUsuario { get; set; }
+>>>>>>> 4a37f5e2fc1a1e69d5ef6830c1e758d793309b3a
 
         
     }
