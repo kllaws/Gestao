@@ -1,12 +1,18 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace DAL
 {
     public class UsuarioDAL
     {
+        private object usuarioBindingSource;
+        private object _idExcluirUsuario;
+        private object _transation;
+        private object _idRemoverTodasPermissoes;
+
         public void Inserir(Usuario _usuario)
         {
             SqlConnection cn = new SqlConnection();//cn é um objeto de conexao
@@ -50,7 +56,7 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT IdUsuario, Nome, NomeUsuario, CPF, Email, Ativo FROM Usuario order by IdUsuario";
+                cmd.CommandText = "SELECT Id, Nome, NomeUsuario, CPF, Email, Ativo FROM Usuario order by Id";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cn.Open();
 
@@ -59,14 +65,14 @@ namespace DAL
                     while (rd.Read())
                     {
                         usuario = new Usuario();
-                        usuario.IdUsuario = Convert.ToInt32(rd["IdUsuario"]);
+                        usuario.Id = Convert.ToInt32(rd["Id"]);
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.CPF = rd["CPF"].ToString();
                         usuario.Email = rd["Email"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIdUsuario((int)usuario.IdUsuario);
+                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIdUsuario((int)usuario.Id);
 
                         usuarios.Add(usuario);
                     }
@@ -103,14 +109,14 @@ namespace DAL
                     while (rd.Read())
                     {
                         usuario = new Usuario();
-                        usuario.IdUsuario = Convert.ToInt32(rd["IdUsuario"]);
+                        usuario.Id = Convert.ToInt32(rd["IdUsuario"]);
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.CPF = rd["CPF"].ToString();
                         usuario.Email = rd["Email"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIdUsuario((int)usuario.IdUsuario);
+                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIdUsuario((int)usuario.Id);
                     }
                 }
                 return usuario;
@@ -133,7 +139,7 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT IdUsuario, Nome, NomeUsuario, CPF, Email, Ativo 
+                cmd.CommandText = @"SELECT Id, Nome, NomeUsuario, CPF, Email, Ativo 
                                     FROM Usuario WHERE NomeUsuario like @NomeUsuario order by Nome";
                 cmd.Parameters.AddWithValue("@NomeUsuario", "%" + _nomeUsuario + "%");
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -145,14 +151,14 @@ namespace DAL
                     while (rd.Read())
                     {
                         usuario = new Usuario();
-                        usuario.IdUsuario = Convert.ToInt32(rd["IdUsuario"]);
+                        usuario.Id = Convert.ToInt32(rd["Id"]);
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.CPF = rd["CPF"].ToString();
                         usuario.Email = rd["Email"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIdUsuario((int)usuario.IdUsuario);
+                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIdUsuario((int)usuario.Id);
                     }
                 }
                 return usuario;
@@ -182,7 +188,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Email", _usuario.Email);
                 cmd.Parameters.AddWithValue("@Senha", _usuario.Senha);
                 cmd.Parameters.AddWithValue("@Ativo", _usuario.Ativo);
-                cmd.Parameters.AddWithValue("@IdUsuario", _usuario.IdUsuario);
+                cmd.Parameters.AddWithValue("@IdUsuario", _usuario.Id);
 
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -196,31 +202,80 @@ namespace DAL
                 cn.Close();
             }
         }
-        public void Excluir(int _id)
+        public void Excluir(int _id, SqlTransaction _transaction = null)
         {
-            SqlConnection cn = new SqlConnection();
-            try
-            {
-                cn.ConnectionString = Conexao.StringDeConexao;
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = cn;
-                cmd.CommandText = @"DELETE FROM UsuarioGrupoUsuario WHERE Id_Usuario = @IDUsuario
-                                    DELETE FROM Usuario WHERE IDUsuario = @IDUsuario";
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IDUsuario", _id);
+        
 
-                cn.Open();
-                cmd.ExecuteScalar();
-            }
-            catch (Exception ex)
+            SqlTransaction transaction = _transaction;
+            using (SqlConnection cn = new SqlConnection(Conexao.StringDeConexao))
             {
-                throw new Exception("Ocorreu um erro ao tentar excluir o usuário no banco de dados: " + ex.Message);
-            }
-            finally
-            {
-                cn.Close();
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM Usuario WHERE Id = @id", cn))
+                {
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Parameters.AddWithValue("@id", _idExcluirUsuario);
+                    try
+                    {
+                        if (_transation == null)
+                        {
+                            cn.Open();
+                            transaction = cn.BeginTransaction();
+                        }
+                        cmd.Transaction = transaction;
+                        cmd.Connection = transaction.Connection;
+
+                        RemoverTodasPermissoes(_id, transaction);
+                        cmd.ExecuteNonQuery();
+
+                        if (_transaction == null)
+                            transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+
+                        throw new Exception("Ocorreu um erro ao tentar excluir o Grupo de usuário no banco de dados" + ex.Message);
+                    }
+                }
             }
         }
+
+        private void RemoverTodasPermissoes(int _id, SqlTransaction _transaction)
+        {
+
+            SqlTransaction transaction = _transaction;
+            using (SqlConnection cn = new SqlConnection(Conexao.StringDeConexao))
+            {
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM PermissaoGrupoUsuario WHERE Id_Permissao = @id", cn))
+                {
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Parameters.AddWithValue("@id", _idRemoverTodasPermissoes);
+                    try
+                    {
+                        if (_transation == null)
+                        {
+                            cn.Open();
+                            transaction = cn.BeginTransaction();
+                        }
+                        cmd.Transaction = transaction;
+                        cmd.Connection = transaction.Connection;
+
+                        //RemoverTodasPermissoes(_id, transaction);
+                        cmd.ExecuteNonQuery();
+
+                        if (_transaction == null)
+                            transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+
+                        throw new Exception("Ocorreu um erro ao tentar excluir RemoverTodasPermissoes no banco de dados" + ex.Message);
+                    }
+                }
+            }
+
+        }
+
         public void AdicionarGrupo(int idUsuario, int idGrupoUsuario)
         {
             SqlConnection cn = new SqlConnection();
@@ -320,11 +375,11 @@ namespace DAL
                 cmd.Connection = cn;
                 cmd.CommandText = @"SELECT TOP 1 1 AS Resultado FROM UsuarioGrupoUsuario
                                     INNER JOIN PermissaoGrupoUsuario 
-                                        ON UsuarioGrupoUsuario.Id_GrupoUsuario = PermissaoGrupoUsuario.IDGrupoUsuario
+                                        ON UsuarioGrupoUsuario.Id_GrupoUsuario = PermissaoGrupoUsuario.Id_GrupoUsuario
                                     WHERE UsuarioGrupoUsuario.Id_Usuario = @Id_Usuario
-                                        AND PermissaoGrupoUsuario.Id_Descricao = @Id_Descricao";
+                                        AND PermissaoGrupoUsuario.Id_Permissao = @Id_Permissao";
                 cmd.Parameters.AddWithValue("@Id_Usuario", _idUsuario);
-                cmd.Parameters.AddWithValue("@Id_Descricao", _idDescricao);
+                cmd.Parameters.AddWithValue("@Id_Permissao", _idDescricao);
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cn.Open();

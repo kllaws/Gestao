@@ -2,6 +2,8 @@
 using BLL;
 using System.Windows.Forms;
 using Models;
+using System.Data.Common;
+using System.Data.SqlClient;
 
 namespace WindowsFormsAppPrincipal
 {
@@ -52,6 +54,7 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonExcluirUsuario_Click(object sender, EventArgs e)
         {
+            
             int id = ((Usuario)usuarioBindingSource.Current).Id;
             new UsuarioBLL().Excluir(id);
         }

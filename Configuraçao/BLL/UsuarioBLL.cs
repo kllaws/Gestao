@@ -24,8 +24,8 @@ namespace BLL
         }
         public void ValidarPermissao(int _idDescricao)
         {
-            if (!new UsuarioDAL().ValidarPermissao(Constantes.IdUsuarioLogado, _idDescricao))
-                throw new Exception("Você não tem permissão para executar esta operação");
+            //if (!new UsuarioDAL().ValidarPermissao(Constantes.IdUsuarioLogado, _idDescricao))
+            //    throw new Exception("Você não tem permissão para executar esta operação");
         }
         private void ValidarDados(Usuario _usuario, string _confirmacaoDeSenha)
         {
