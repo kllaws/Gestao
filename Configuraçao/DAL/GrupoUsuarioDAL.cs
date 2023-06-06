@@ -414,6 +414,11 @@ namespace DAL
                         }
 
                     }
+
+        public List<GrupoUsuario> BuscarPorId(int idGrupoUsuario)
+        {
+            throw new NotImplementedException();
+        }
 =======
         public void Excluir(int _id)
         {
