@@ -59,6 +59,17 @@ CREATE TABLE PermissaoGrupoUsuario
 	CONSTRAINT PK_PermissaoGrupoUsuario PRIMARY KEY (IdPermissao, IdGrupoUsuario)
 )
 GO
+CREATE TABLE cliente
+(
+Id INT PRIMARY KEY IDENTITY(1,1),
+Nome VARCHAR (150),
+CPF VARCHAR(15),
+RG VARCHAR(15),
+Email varchar(200),
+Fone VARCHAR(15),
+)
+GO
+
 
 IF NOT EXISTS (SELECT 1 FROM SYS.INDEXES WHERE object_id = OBJECT_ID('Usuario') AND IS_PRIMARY_KEY = 1)
 ALTER TABLE Usuario ADD CONSTRAINT PK_Usuario PRIMARY KEY (Id)
