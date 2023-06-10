@@ -13,7 +13,10 @@ namespace DAL
     public class ClienteDAL
     {
         public void Inserir(Cliente _cliente)
+        
         {
+            
+
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
             try
             {
