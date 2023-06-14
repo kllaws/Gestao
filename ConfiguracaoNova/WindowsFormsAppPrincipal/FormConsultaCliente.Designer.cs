@@ -47,6 +47,7 @@
             this.buttonAlterar = new System.Windows.Forms.Button();
             this.buttonInserir = new System.Windows.Forms.Button();
             this.buttonExcluir = new System.Windows.Forms.Button();
+            this.comboBoxBuscarPor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.clienteDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -136,7 +137,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 73);
+            this.label2.Location = new System.Drawing.Point(149, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 3;
@@ -144,9 +145,9 @@
             // 
             // textBoxBuscar
             // 
-            this.textBoxBuscar.Location = new System.Drawing.Point(35, 92);
+            this.textBoxBuscar.Location = new System.Drawing.Point(152, 92);
             this.textBoxBuscar.Name = "textBoxBuscar";
-            this.textBoxBuscar.Size = new System.Drawing.Size(592, 22);
+            this.textBoxBuscar.Size = new System.Drawing.Size(475, 22);
             this.textBoxBuscar.TabIndex = 4;
             // 
             // buttonBuscar
@@ -217,11 +218,25 @@
             this.buttonExcluir.UseVisualStyleBackColor = true;
             this.buttonExcluir.Click += new System.EventHandler(this.buttonExcluir_Click);
             // 
+            // comboBoxBuscarPor
+            // 
+            this.comboBoxBuscarPor.FormattingEnabled = true;
+            this.comboBoxBuscarPor.Items.AddRange(new object[] {
+            "Id",
+            "Nome",
+            "CPF",
+            "Todos"});
+            this.comboBoxBuscarPor.Location = new System.Drawing.Point(35, 91);
+            this.comboBoxBuscarPor.Name = "comboBoxBuscarPor";
+            this.comboBoxBuscarPor.Size = new System.Drawing.Size(111, 24);
+            this.comboBoxBuscarPor.TabIndex = 6;
+            // 
             // FormConsultaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 487);
+            this.Controls.Add(this.comboBoxBuscarPor);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonSelecionar);
@@ -235,6 +250,7 @@
             this.Controls.Add(this.clienteDataGridView);
             this.Name = "FormConsultaCliente";
             this.Text = "FormConsultaCliente";
+            this.Load += new System.EventHandler(this.FormConsultaCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.clienteDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -262,5 +278,6 @@
         private System.Windows.Forms.Button buttonAlterar;
         private System.Windows.Forms.Button buttonInserir;
         private System.Windows.Forms.Button buttonExcluir;
+        private System.Windows.Forms.ComboBox comboBoxBuscarPor;
     }
 }

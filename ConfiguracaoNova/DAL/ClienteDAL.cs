@@ -131,7 +131,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM cliente WERE Id = @Id";
+                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM cliente WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Id", _id);
 
@@ -172,7 +172,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM CPF WERE CPF = @CPF";
+                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM CPF WHERE CPF = @CPF";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@CPF", _CPF);
 
@@ -212,9 +212,11 @@ namespace DAL
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = @"UPDATE Cliente SET Nome = @Nome, CPF = @CPF, RG = @RG, Email = @Email, Fone = @Fone, WERE Id = @Id)";
+                cmd.CommandText = @"UPDATE Cliente SET Nome = @Nome, CPF = @CPF, RG = @RG, Email = @Email, Fone = @Fone WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
 
+
+                cmd.Parameters.AddWithValue("@Id", _cliente.Id);
                 cmd.Parameters.AddWithValue("@Nome", _cliente.Nome);
                 cmd.Parameters.AddWithValue("@CPF", _cliente.CPF);
                 cmd.Parameters.AddWithValue("@RG", _cliente.RG);

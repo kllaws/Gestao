@@ -14,7 +14,7 @@ namespace BLL
         {
             new ClienteDAL().Inserir( _cliente);
         }
-        public List<Cliente> BuscarTodods()
+        public List<Cliente> BuscarTodos()
         {
             return new ClienteDAL().BuscarTodos();
         }
