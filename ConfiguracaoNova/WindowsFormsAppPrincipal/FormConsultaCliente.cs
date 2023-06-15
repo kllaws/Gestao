@@ -21,6 +21,9 @@ namespace WindowsFormsAppPrincipal
                 switch (comboBoxBuscarPor.SelectedIndex)
                 {
                     case 0:
+                        if(String.IsNullOrEmpty(textBoxBuscar.Text))
+                            throw new Exception("Informe um Id para fazer a busca.") { Data = { { "Id", 31 } } };
+
                         clienteBindingSource.DataSource = new ClienteBLL().BuscarPorId(Convert.ToInt32(textBoxBuscar.Text));
                         break;
                     case 1:
@@ -36,7 +39,6 @@ namespace WindowsFormsAppPrincipal
                         break;
 
                 }
-                clienteBindingSource.DataSource = new ClienteBLL().BuscarPorNome(textBoxBuscar.Text);
             }
             catch (Exception ex)
             {
@@ -74,11 +76,14 @@ namespace WindowsFormsAppPrincipal
         {
             try
             {
+
                 if (clienteBindingSource.Count <= 0)
                 {
                     MessageBox.Show("Nao existe registro para ser excluido");
                     return;
                 }
+                if (MessageBox.Show("Deseja realmente excluir este arquivo?", "Atençao", MessageBoxButtons.YesNo) == DialogResult.No)
+                    return;
                 
                 new ClienteBLL().Excluir(((Cliente)clienteBindingSource.Current).Id);
                 clienteBindingSource.RemoveCurrent();

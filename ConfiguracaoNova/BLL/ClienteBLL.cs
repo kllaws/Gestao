@@ -28,6 +28,10 @@ namespace BLL
         }
         public Cliente BuscarPorCPF(string _CPF)
         {
+            if (string.IsNullOrEmpty(_CPF))
+            {
+                throw new Exception("informe um CPF") { Data = { { "Id", 32 } } };
+            }
             return new ClienteDAL().BuscarPorCPF(_CPF);
         }
         public void Alterar(Cliente _cliente)

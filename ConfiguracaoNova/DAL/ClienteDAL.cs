@@ -172,16 +172,15 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM CPF WHERE CPF = @CPF";
+                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM Cliente WHERE CPF LIKE @CPF";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@CPF", _CPF);
 
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
-                    while (rd.Read())
+                    if (rd.Read())
                     {
-                        cliente = new Cliente();
                         cliente.Id = (int)rd["Id"];
                         cliente.Nome = rd["Nome"].ToString();
                         cliente.CPF = rd["CPF"].ToString();
@@ -205,8 +204,8 @@ namespace DAL
                 cn.Close();
             }
         }
-            public void Alterar(Cliente _cliente)
-            {
+
+           public void Alterar(Cliente _cliente) {
 
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
             try
@@ -267,3 +266,4 @@ namespace DAL
         }
         }
     } 
+
