@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAppPrincipal
 {
-    public partial class FormCadastroCliente : Form
+    public partial class FormCadastroFornecedor : Form
     {
         int id;
-        public FormCadastroCliente(int _id = 0)
+        public FormCadastroFornecedor(int _id = 0)
         {
             InitializeComponent();
             id = _id;

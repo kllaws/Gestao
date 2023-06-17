@@ -8,9 +8,9 @@ namespace DAL
     public class ClienteDAL
     {
         public void Inserir(Cliente _cliente)
-        
+
         {
-            
+
 
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
             try
@@ -164,8 +164,8 @@ namespace DAL
                 cn.Close();
             }
         }
-            public Cliente BuscarPorCPF(string _CPF)
-            {
+        public Cliente BuscarPorCPF(string _CPF)
+        {
             Cliente cliente = new Cliente();
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
             try
@@ -205,7 +205,8 @@ namespace DAL
             }
         }
 
-           public void Alterar(Cliente _cliente) {
+        public void Alterar(Cliente _cliente)
+        {
 
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
             try
@@ -237,8 +238,8 @@ namespace DAL
             }
 
         }
-            public void Excluir(int _id)
-            {
+        public void Excluir(int _id)
+        {
 
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
             try
@@ -264,6 +265,6 @@ namespace DAL
             }
 
         }
-        }
-    } 
+    }
+}
 

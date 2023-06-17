@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsAppPrincipal
 {
-    partial class FormCadastroCliente
+    partial class FormCadastroFornecedor
     {
         /// <summary>
         /// Required designer variable.
@@ -169,7 +169,7 @@
             // 
             // clienteBindingSource
             // 
-            this.clienteBindingSource.DataSource = typeof(Models.Cliente);
+            this.clienteBindingSource.DataSource = typeof(Models.Fornecedor);
             // 
             // FormCadastroCliente
             // 

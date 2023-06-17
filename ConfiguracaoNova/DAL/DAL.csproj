@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ClienteDAL.cs" />
     <Compile Include="Conexao.cs" />
+    <Compile Include="FornecedorDAL.cs" />
     <Compile Include="GrupoUsuarioDAL.cs" />
     <Compile Include="PermissaoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

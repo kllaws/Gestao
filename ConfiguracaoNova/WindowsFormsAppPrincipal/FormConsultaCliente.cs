@@ -58,7 +58,7 @@ namespace WindowsFormsAppPrincipal
 
                 }
                 int id = ((Cliente)clienteBindingSource.Current).Id;
-                using (FormCadastroCliente frm = new FormCadastroCliente(id))
+                using (FormCadastroFornecedor frm = new FormCadastroFornecedor(id))
                 {
                     frm.ShowDialog();
                 }
@@ -99,7 +99,7 @@ namespace WindowsFormsAppPrincipal
         {
             try
             {
-                using (FormCadastroCliente frm = new FormCadastroCliente())
+                using (FormCadastroFornecedor frm = new FormCadastroFornecedor())
                 {
                     frm.ShowDialog();
                 }
@@ -114,6 +114,16 @@ namespace WindowsFormsAppPrincipal
         private void FormConsultaCliente_Load(object sender, EventArgs e)
         {
             comboBoxBuscarPor.SelectedIndex = 3;
+        }
+
+        private void buttonSelecionar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

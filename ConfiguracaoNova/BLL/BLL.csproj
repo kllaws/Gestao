@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteBLL.cs" />
+    <Compile Include="FornecedorBLL.cs" />
     <Compile Include="GrupoUsuarioBLL.cs" />
     <Compile Include="PermissaoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
