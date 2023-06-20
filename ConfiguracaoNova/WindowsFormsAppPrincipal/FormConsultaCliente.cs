@@ -58,7 +58,7 @@ namespace WindowsFormsAppPrincipal
 
                 }
                 int id = ((Cliente)clienteBindingSource.Current).Id;
-                using (FormCadastroFornecedor frm = new FormCadastroFornecedor(id))
+                using (FormCadastroCliente frm = new FormCadastroCliente(id))
                 {
                     frm.ShowDialog();
                 }
@@ -99,7 +99,7 @@ namespace WindowsFormsAppPrincipal
         {
             try
             {
-                using (FormCadastroFornecedor frm = new FormCadastroFornecedor())
+                using (FormCadastroCliente frm = new FormCadastroCliente())
                 {
                     frm.ShowDialog();
                 }

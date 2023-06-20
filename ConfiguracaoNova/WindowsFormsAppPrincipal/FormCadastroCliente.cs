@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAppPrincipal
 {
-    public partial class FormCadastroFornecedor : Form
+    public partial class FormCadastroCliente : Form
     {
         int id;
-        public FormCadastroFornecedor(int _id = 0)
+        public FormCadastroCliente(int _id = 0)
         {
             InitializeComponent();
             id = _id;
@@ -53,6 +53,16 @@ namespace WindowsFormsAppPrincipal
 
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void nomeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cPFTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

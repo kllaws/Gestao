@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsAppPrincipal
 {
-    partial class FormCadastroFornecedor
+    partial class FormCadastroCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -103,6 +103,7 @@
             this.nomeTextBox.Name = "nomeTextBox";
             this.nomeTextBox.Size = new System.Drawing.Size(480, 22);
             this.nomeTextBox.TabIndex = 1;
+            this.nomeTextBox.TextChanged += new System.EventHandler(this.nomeTextBox_TextChanged);
             // 
             // cPFTextBox
             // 
@@ -111,6 +112,7 @@
             this.cPFTextBox.Name = "cPFTextBox";
             this.cPFTextBox.Size = new System.Drawing.Size(133, 22);
             this.cPFTextBox.TabIndex = 3;
+            this.cPFTextBox.TextChanged += new System.EventHandler(this.cPFTextBox_TextChanged);
             // 
             // rGTextBox
             // 
